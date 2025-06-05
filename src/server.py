@@ -2,9 +2,11 @@
 *** MCP Server ***
 """
 
-from mcp.server.fastmcp import FastMCP
-from starlette.requests import Request
+from fastmcp import FastMCP
 from fastmcp.server.dependencies import get_http_request
+from fastapi import Request
+from starlette.requests import Request
+import requests
 import os
 import logging
 import traceback
@@ -70,9 +72,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 3000))
     logger.info(f"Starting MCP Server on 0.0.0.0:{port}")
     try:
-        mcp.settings.host = "0.0.0.0"
-        mcp.settings.port = port
-        mcp.run(transport="sse")
+        mcp.run(transport="sse", port=port, host="0.0.0.0")
     except Exception as e:
         logger.critical("Failed to start server: %s", str(e))
         traceback.print_exc()

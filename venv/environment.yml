@@ -18,3 +18,4 @@ dependencies:
     - starlette
     - sse-starlette
     - fastmcp
+    - requests
