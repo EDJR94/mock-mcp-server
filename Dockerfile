@@ -34,7 +34,7 @@ COPY src/ /app/src/
 ENV PYTHONPATH="/app/src"
 
 # Expose port
-EXPOSE 3005
+EXPOSE 3000
 
 # Run the application
 CMD ["python", "/app/src/server.py"] 

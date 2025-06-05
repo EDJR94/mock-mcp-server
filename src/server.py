@@ -34,6 +34,6 @@ def add(a: int, b: int) -> int:
 
 if __name__ == "__main__":
 
-    # mcp.settings.host = "0.0.0.0"
-    mcp.settings.port = 3005
+    mcp.settings.host = "0.0.0.0"
+    mcp.settings.port = int(os.environ.get("PORT", 3000))
     mcp.run(transport="sse")
