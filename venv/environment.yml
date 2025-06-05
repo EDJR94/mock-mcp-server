@@ -1,0 +1,17 @@
+# Install:
+# conda env create --file environment.yml
+
+# Update:
+# conda env update --file environment.yml --prune
+
+# Environment name
+name: mcp-server
+
+# Dependencies and packages
+dependencies:
+  - python=3.13
+  - pip
+
+  - pip:
+    - mcp
+    - mcp[cli]
