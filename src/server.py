@@ -5,6 +5,7 @@
 """
 
 from mcp.server.fastmcp import FastMCP
+import os
 
 
 mcp = FastMCP(name="MCP Server")
