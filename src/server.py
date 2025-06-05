@@ -4,7 +4,6 @@
 
 from fastmcp import FastMCP
 from fastmcp.server.dependencies import get_http_request
-from fastapi import Request
 from starlette.requests import Request
 import requests
 import os
