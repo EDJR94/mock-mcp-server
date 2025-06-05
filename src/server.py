@@ -5,6 +5,7 @@
 """
 
 from mcp.server.fastmcp import FastMCP
+from starlette.requests import Request
 import os
 
 
@@ -15,7 +16,7 @@ def get_bearer_token():
     headers = request.headers
     # Check if 'Authorization' header is present
     authorization_header = headers.get('Authorization')
-    logger.info(f"Authorization Header: {authorization_header}")
+
     
     if authorization_header:
         # Split the header into 'Bearer <token>'
