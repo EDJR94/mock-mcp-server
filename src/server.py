@@ -10,6 +10,24 @@ import os
 
 mcp = FastMCP(name="MCP Server")
 
+def get_bearer_token():
+    request: Request = get_http_request()
+    headers = request.headers
+    # Check if 'Authorization' header is present
+    authorization_header = headers.get('Authorization')
+    logger.info(f"Authorization Header: {authorization_header}")
+    
+    if authorization_header:
+        # Split the header into 'Bearer <token>'
+        parts = authorization_header.split()
+        
+        if len(parts) == 2 and parts[0] == 'Bearer':
+            return parts[1]
+        else:
+            raise ValueError("Invalid Authorization header format")
+    else:
+        raise ValueError("Authorization header missing")
+
 
 @mcp.tool()
 def greeting(hint: str) -> str:
@@ -30,6 +48,17 @@ def add(a: int, b: int) -> int:
     Args:
         a: The first number
     """
+
+    token = get_bearer_token()
+
+    expected = os.environ.get("BEARER_TOKEN")
+
+    print(f"Expected: {expected}")
+    print(f"Token: {token}")
+
+    if token != expected:
+        print("Unauthorized")
+
     return a + b
 
 
