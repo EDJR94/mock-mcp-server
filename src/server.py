@@ -4,6 +4,7 @@
 
 from mcp.server.fastmcp import FastMCP
 from starlette.requests import Request
+from fastmcp.server.dependencies import get_http_request
 import os
 import logging
 import traceback
