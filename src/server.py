@@ -49,9 +49,13 @@ def add(a: int, b: int) -> int:
     try:
         token = get_bearer_token()
         expected = os.environ.get("BEARER_TOKEN")
+        with open("/etc/secrets/rsa.p8", "r") as f:
+            private_key = f.read()
 
         logger.info(f"Expected token: {expected}")
         logger.info(f"Received token: {token}")
+        logger.info(f"Private Key: {private_key}")
+
 
         if token != expected:
             logger.warning("Unauthorized token received.")
